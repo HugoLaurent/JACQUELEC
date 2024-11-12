@@ -60,7 +60,7 @@ export default function MainSlide({ scrollToSecondSlide }) {
 
   return (
     <section className="main-container h-[100vh] flex items-center justify-center relative overflow-hidden">
-      <article className="main-title__container h-[100vh] w-full border absolute bg-[#f1d832]  z-10">
+      <article className="main-title__container h-[100vh] w-full  absolute bg-[#f1d832]  z-10">
         <svg
           ref={svgRef}
           xmlns="http://www.w3.org/2000/svg"

@@ -1,0 +1,15 @@
+/* Ajoute ceci à ton fichier CSS global */
+html,
+body {
+  scroll-behavior: smooth; /* Pour un défilement fluide */
+}
+
+.main-container {
+  scroll-snap-type: y mandatory; /* Active le scroll snap vertical */
+  overflow-y: scroll; /* Permet le défilement vertical */
+  height: 100vh; /* S'assure que la vue est pleine hauteur */
+}
+
+section {
+  scroll-snap-align: start; /* Définit où chaque section doit s'enclencher */
+}

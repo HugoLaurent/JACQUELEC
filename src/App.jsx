@@ -1,4 +1,7 @@
 import { useState, useEffect, useRef } from "react";
+
+import "./App.css";
+
 import Header from "./components/Header/Header";
 import ForthSlide from "./pages/ForthSlide/ForthSlide";
 import MainSlide from "./pages/MainSlide/MainSlide";
@@ -6,64 +9,115 @@ import SecondSlide from "./pages/SecondSlide/SecondSlide";
 import ThirdSlice from "./pages/ThirdSlice/ThirdSlice";
 
 export default function App() {
-  const [isMainSlideVisible, setIsMainSlideVisible] = useState(true);
+  const containerRef = useRef(null);
   const mainSlideRef = useRef(null);
-  const secondSlideRef = useRef(null); // Référence vers la deuxième section
+  const secondSlideRef = useRef(null);
   const thirdSlideRef = useRef(null);
   const forthSlideRef = useRef(null);
+  const [isNavigating, setIsNavigating] = useState(false);
+  const [selected, setSelected] = useState("home");
 
-  const scrollToSecondSlide = () => {
-    // Utilisation de scrollIntoView pour défiler vers la deuxième section
-    secondSlideRef.current.scrollIntoView({
-      behavior: "smooth", // Animation fluide
-      block: "start", // Aligne l'élément au début du viewport
-    });
+  // Map des références pour la navigation
+  const slideRefs = {
+    mainSlide: mainSlideRef,
+    secondSlide: secondSlideRef,
+    thirdSlide: thirdSlideRef,
+    forthSlide: forthSlideRef,
   };
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.5, // Trigger when 50% of the section is visible
-    };
+  // Fonction de navigation au clic
+  const handleNavigation = (refName) => {
+    if (isNavigating) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.target === mainSlideRef.current) {
-          setIsMainSlideVisible(entry.isIntersecting);
+    setIsNavigating(true);
+    setSelected(refName);
+
+    const targetRef = slideRefs[refName];
+
+    if (targetRef?.current) {
+      setTimeout(() => {
+        targetRef.current.scrollIntoView({ behavior: "smooth" });
+
+        setTimeout(() => {
+          setIsNavigating(false);
+        }, 1000);
+      }, 50);
+    }
+  };
+
+  // Écouteur de scroll pour mettre à jour "selected" selon la section visible
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let lastScrollTop = 0;
+    let isScrolling = false;
+    let scrollTimeout;
+
+    const handleScroll = () => {
+      if (isScrolling || isNavigating) return;
+
+      const currentScrollTop = container.scrollTop;
+      const sections = [
+        mainSlideRef,
+        secondSlideRef,
+        thirdSlideRef,
+        forthSlideRef,
+      ];
+      let currentSection = "home";
+
+      sections.forEach((ref) => {
+        if (ref.current) {
+          const sectionTop = ref.current.offsetTop;
+          const sectionHeight = ref.current.offsetHeight;
+
+          if (
+            currentScrollTop >= sectionTop - 100 &&
+            currentScrollTop < sectionTop + sectionHeight - 100
+          ) {
+            currentSection = ref.current.id;
+          }
         }
       });
-    }, observerOptions);
 
-    if (mainSlideRef.current) {
-      observer.observe(mainSlideRef.current);
-    }
-
-    // Cleanup observer on component unmount
-    return () => {
-      if (mainSlideRef.current) {
-        observer.unobserve(mainSlideRef.current);
+      if (selected !== currentSection && !isNavigating) {
+        setSelected(currentSection);
       }
+
+      lastScrollTop = currentScrollTop;
     };
-  }, []);
+
+    container.addEventListener("scroll", handleScroll);
+
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, [isNavigating, selected]);
 
   return (
     <main className="relative">
-      <Header textColor="red-500" hoverColor="yellow-400" />
-
-      <div className=" snap-y snap-mandatory h-screen relative scroll-smooth overflow-y-scroll">
-        <section ref={mainSlideRef} className=" snap-start h-screen">
+      <Header
+        textColor="red-500"
+        onNavigate={handleNavigation}
+        isNavigating={isNavigating}
+        selected={selected}
+        setSelected={setSelected}
+      />
+      <div
+        ref={containerRef}
+        className="h-screen relative overflow-y-scroll scroll-smooth main-container"
+      >
+        <section ref={mainSlideRef} id="home" className="h-screen">
           <MainSlide />
         </section>
-        <section
-          ref={secondSlideRef}
-          className=" snap-start h-screen"
-          id="second-page"
-        >
+        <section ref={secondSlideRef} id="services" className="min-h-screen">
           <SecondSlide />
         </section>
-        <section ref={thirdSlideRef} className=" snap-start h-screen">
+        <section ref={thirdSlideRef} id="about" className="min-h-screen">
           <ThirdSlice />
         </section>
-        <section ref={forthSlideRef} className=" snap-start h-screen">
+        <section ref={forthSlideRef} id="contact" className="min-h-screen">
           <ForthSlide />
         </section>
       </div>

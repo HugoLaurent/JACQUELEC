@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import "./header-style.css";
 
-const Header = ({ textColor }) => {
-  const [selected, setSelected] = useState("home"); // État pour l'élément sélectionné
-  const navBarInfo = ["home", "services", "about", "contact"];
+const Header = ({
+  textColor,
+  onNavigate,
+  isNavigating,
+  selected,
+  setSelected,
+}) => {
+  const navBarInfo = [
+    { id: "home", ref: "mainSlide" },
+    { id: "services", ref: "secondSlide" },
+    { id: "about", ref: "thirdSlide" },
+    { id: "contact", ref: "forthSlide" },
+  ];
 
   const handleClick = (item) => {
-    setSelected(item); // Met à jour l'élément sélectionné
+    onNavigate(item.ref);
+    setSelected(item.id);
   };
 
   return (
@@ -14,13 +25,13 @@ const Header = ({ textColor }) => {
       <ul className="flex gap-3">
         {navBarInfo.map((item) => (
           <li
-            key={item}
+            key={item.id}
             className={`text-${textColor} nav-link ${
-              selected === item ? "selected" : ""
-            }`}
-            onClick={() => handleClick(item)} // Gère le clic
+              selected === item.id ? "selected" : ""
+            } ${isNavigating ? "pointer-events-none" : ""}`}
+            onClick={() => handleClick(item)}
           >
-            <span className="uppercase">{item}</span>
+            <span className="uppercase">{item.id}</span>
           </li>
         ))}
       </ul>
