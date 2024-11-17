@@ -1,0 +1,21 @@
+# Fichier robots.txt pour Jacquelec - Électricien à Rennes
+
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /private/
+Allow: /services/
+Allow: /contact/
+
+# Empêcher les moteurs de recherche d'explorer les pages de connexion
+Disallow: /login
+
+# Empêcher l'indexation de certains fichiers sensibles
+Disallow: /private/
+
+# Autoriser l'exploration des pages de services et de contact
+Allow: /services/
+Allow: /contact/
+
+# Limiter la vitesse de crawl pour éviter d'affecter les performances du serveur
+Crawl-delay: 10

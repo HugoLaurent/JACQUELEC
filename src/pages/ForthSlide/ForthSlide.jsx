@@ -42,10 +42,7 @@ export default function ForthSlide() {
           content="contact électricien Rennes, devis électricien Rennes, dépannage électrique Rennes, mise aux normes électriques"
         />
       </Helmet>
-      <div
-        ref={contactSlideRef}
-        className="min-h-screen bg-[#f1d832] flex items-center justify-center relative overflow-x-auto"
-      >
+      <div className="min-h-screen bg-[#f1d832] flex items-center justify-center relative overflow-x-auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 100 100"

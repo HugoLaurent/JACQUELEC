@@ -9,10 +9,10 @@ const Header = ({
   setSelected,
 }) => {
   const navBarInfo = [
-    { id: "accueil", ref: "mainSlide" },
-    { id: "services", ref: "secondSlide" },
-    { id: "a propos", ref: "thirdSlide" },
-    { id: "contact", ref: "forthSlide" },
+    { name: "accueil", id: "accueil", ref: "mainSlide" },
+    { name: "services", id: "services", ref: "secondSlide" },
+    { name: "a propos", id: "a-propos", ref: "thirdSlide" },
+    { name: "contact", id: "contact", ref: "forthSlide" },
   ];
 
   const handleClick = (item) => {
@@ -31,7 +31,7 @@ const Header = ({
             } ${isNavigating ? "pointer-events-none" : ""}`}
             onClick={() => handleClick(item)}
           >
-            <span className="uppercase">{item.id}</span>
+            <span className="uppercase">{item.name}</span>
           </li>
         ))}
       </ul>
