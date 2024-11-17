@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet";
 
 const services = [
   {
@@ -82,35 +83,48 @@ export default function SecondSlide() {
   }, []);
 
   return (
-    <div
-      ref={secondSlideRef}
-      className="min-h-screen bg-[#f1d832] flex items-center justify-center relative overflow-x-auto"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 100 100"
-        className="absolute w-full h-full z-10"
-      >
-        {/* Tracé qui "continue" du premier */}
-        <path
-          d="M 99 0 L 99 30 L -20 30 L -20 70 L 99 70 L 99 100"
-          stroke="black"
-          strokeWidth=".1"
-          fill="none"
+    <>
+      <Helmet>
+        <title>Nos Services - Jacquelec | Électricien à Rennes</title>
+        <meta
+          name="description"
+          content="Découvrez les services d'électricien de Jacquelec : installation, dépannage, mise aux normes électriques à Rennes."
         />
-      </svg>
-      <section className="flex flex-wrap justify-center gap-6 p-6 py-8 max-w-[1300px]">
-        {services.map((service, index) => (
-          <article
-            key={index}
-            className="card-service__wrapper z-20  cursor-default bg-white p-4 rounded-md shadow-md flex flex-col items-center text-center w-[250px] min-w-[250px] flex-shrink-0"
-          >
-            <div className="service-icon text-4xl mb-4">{service.icone}</div>
-            <h3 className="text-lg font-semibold mb-4">{service.nom}</h3>
-            <p className="text-gray-700 text-sm">{service.description}</p>
-          </article>
-        ))}
-      </section>
-    </div>
+        <meta
+          name="keywords"
+          content="installation électrique Rennes, dépannage électrique Rennes, mise aux normes électriques, électricien Rennes"
+        />
+      </Helmet>
+      <div
+        ref={secondSlideRef}
+        className="min-h-screen bg-[#f1d832] flex items-center justify-center relative overflow-x-auto"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          className="absolute w-full h-full z-10"
+        >
+          {/* Tracé qui "continue" du premier */}
+          <path
+            d="M 99 0 L 99 30 L -20 30 L -20 70 L 99 70 L 99 100"
+            stroke="black"
+            strokeWidth=".1"
+            fill="none"
+          />
+        </svg>
+        <section className="flex flex-wrap justify-center gap-6 p-6 py-8 max-w-[1300px]">
+          {services.map((service, index) => (
+            <article
+              key={index}
+              className="card-service__wrapper z-20  cursor-default bg-white p-4 rounded-md shadow-md flex flex-col items-center text-center w-[250px] min-w-[250px] flex-shrink-0"
+            >
+              <div className="service-icon text-4xl mb-4">{service.icone}</div>
+              <h3 className="text-lg font-semibold mb-4">{service.nom}</h3>
+              <p className="text-gray-700 text-sm">{service.description}</p>
+            </article>
+          ))}
+        </section>
+      </div>
+    </>
   );
 }

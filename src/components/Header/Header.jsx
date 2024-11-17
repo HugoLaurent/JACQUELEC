@@ -9,9 +9,9 @@ const Header = ({
   setSelected,
 }) => {
   const navBarInfo = [
-    { id: "home", ref: "mainSlide" },
+    { id: "accueil", ref: "mainSlide" },
     { id: "services", ref: "secondSlide" },
-    { id: "about", ref: "thirdSlide" },
+    { id: "a propos", ref: "thirdSlide" },
     { id: "contact", ref: "forthSlide" },
   ];
 

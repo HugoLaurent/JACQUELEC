@@ -15,7 +15,7 @@ export default function App() {
   const thirdSlideRef = useRef(null);
   const forthSlideRef = useRef(null);
   const [isNavigating, setIsNavigating] = useState(false);
-  const [selected, setSelected] = useState("home");
+  const [selected, setSelected] = useState("accueil");
 
   // Map des références pour la navigation
   const slideRefs = {
@@ -64,7 +64,7 @@ export default function App() {
         thirdSlideRef,
         forthSlideRef,
       ];
-      let currentSection = "home";
+      let currentSection = "accueil";
 
       sections.forEach((ref) => {
         if (ref.current) {
@@ -108,13 +108,13 @@ export default function App() {
         ref={containerRef}
         className="h-screen relative overflow-y-scroll scroll-smooth main-container"
       >
-        <section ref={mainSlideRef} id="home" className="h-screen">
+        <section ref={mainSlideRef} id="accueil" className="h-screen">
           <MainSlide />
         </section>
         <section ref={secondSlideRef} id="services" className="min-h-screen">
           <SecondSlide />
         </section>
-        <section ref={thirdSlideRef} id="about" className="min-h-screen">
+        <section ref={thirdSlideRef} id="a propos" className="min-h-screen">
           <ThirdSlice />
         </section>
         <section ref={forthSlideRef} id="contact" className="min-h-screen">
