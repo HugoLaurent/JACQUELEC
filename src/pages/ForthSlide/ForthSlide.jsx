@@ -62,7 +62,11 @@ export default function ForthSlide() {
           <h2 className="text-2xl font-semibold mb-4 text-black">
             Contactez-moi
           </h2>
-          <form className="bg-white p-6 rounded-md shadow-md w-[435px] max-w-md z-50">
+          <form
+            action="https://formspree.io/f/mqaklkpg"
+            method="POST"
+            className="bg-white p-6 rounded-md shadow-md w-[435px] max-w-md z-50"
+          >
             <div className="mb-4">
               <label
                 className="block text-[#f1d832] text-sm font-bold mb-2"
@@ -73,6 +77,7 @@ export default function ForthSlide() {
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="name"
+                name="name"
                 type="text"
                 placeholder="Votre nom"
               />
@@ -87,6 +92,7 @@ export default function ForthSlide() {
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="email"
+                name="email"
                 type="email"
                 placeholder="Votre email"
               />
@@ -101,6 +107,7 @@ export default function ForthSlide() {
               <textarea
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="message"
+                name="message"
                 rows="4"
                 placeholder="Votre message"
               ></textarea>
@@ -108,7 +115,7 @@ export default function ForthSlide() {
             <div className="flex items-center justify-between">
               <button
                 className="bg-[#f1d832] hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
+                type="submit"
               >
                 Envoyer
               </button>

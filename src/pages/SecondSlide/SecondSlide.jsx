@@ -85,14 +85,19 @@ export default function SecondSlide() {
   return (
     <>
       <Helmet>
-        <title>Nos Services - Jacquelec | Électricien à Rennes</title>
+        <title>
+          Nos Services - Jacquelec | Électricien à Rennes - Installation,
+          Dépannage, Mise aux Normes
+        </title>
+
         <meta
           name="description"
-          content="Découvrez les services d'électricien de Jacquelec : installation, dépannage, mise aux normes électriques à Rennes."
+          content="Découvrez les services d'électricien de Jacquelec à Rennes : installation électrique, dépannage, mise aux normes électriques, et plus encore. Service rapide et professionnel."
         />
+
         <meta
           name="keywords"
-          content="installation électrique Rennes, dépannage électrique Rennes, mise aux normes électriques, électricien Rennes"
+          content="installation électrique Rennes, dépannage électrique Rennes, électricien à Rennes, mise aux normes électriques, service électricien Rennes"
         />
       </Helmet>
       <div
@@ -118,7 +123,13 @@ export default function SecondSlide() {
               key={index}
               className="card-service__wrapper z-20  cursor-default bg-white p-4 rounded-md shadow-md flex flex-col items-center text-center w-[250px] min-w-[250px] flex-shrink-0"
             >
-              <div className="service-icon text-4xl mb-4">{service.icone}</div>
+              <div
+                className="service-icon text-4xl mb-4"
+                aria-label={service.nom}
+              >
+                {service.icone}
+              </div>
+
               <h3 className="text-lg font-semibold mb-4">{service.nom}</h3>
               <p className="text-gray-700 text-sm">{service.description}</p>
             </article>

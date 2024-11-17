@@ -65,11 +65,11 @@ export default function MainSlide({ scrollToSecondSlide }) {
         <title>Jacquelec - Accueil</title>
         <meta
           name="description"
-          content="Jacques Pinard, électricien à Rennes, expert en installation et dépannage. Service rapide et de qualité."
+          content="Jacques Pinard, électricien à Rennes, propose des services d'installation, de rénovation électrique, de dépannage, et de mise aux normes pour particuliers et entreprises."
         />
         <meta
           name="keywords"
-          content="électricien Rennes, installation électrique, dépannage rapide"
+          content="électricien Rennes, installation électrique, dépannage électrique, mise aux normes, électricien dépannage Rennes"
         />
       </Helmet>
       <section className="main-container h-[100vh] flex items-center justify-center relative overflow-hidden">
@@ -95,6 +95,7 @@ export default function MainSlide({ scrollToSecondSlide }) {
               height="50"
               className="w-4 h-4 main-bulb"
               transform={`translate(${30 - 25}, ${30 - 25})`}
+              alt="Ampoule allumée"
             />
           </svg>
           <div className="main-hero">
@@ -126,19 +127,23 @@ export default function MainSlide({ scrollToSecondSlide }) {
           ref={blackBgRef}
           className="main-title__container h-[100vh] w-full absolute bg-black text-[#f1d832]  z-20"
         >
-          <svg
-            ref={svgRef}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 100 100"
-            className="absolute w-full h-full z-40"
-          >
-            <path
-              d="M 100 100 L 100 90 L -25 90 L -25 20 L 30 20 L 30 30"
-              stroke="#f1d832"
-              strokeWidth=".1"
-              fill="none"
-            />
-          </svg>
+          <a href="#second-page" className="animate-bounce">
+            <span className="sr-only">Descendre vers les services</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="black"
+              viewBox="0 0 24 24"
+              className="w-6 h-6 text-[black]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </a>
+
           <div className="main-hero">
             <h1>JACQUÉLEC</h1>
           </div>

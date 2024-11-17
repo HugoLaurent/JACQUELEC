@@ -4,14 +4,19 @@ export default function ThirdSlice() {
   return (
     <>
       <Helmet>
-        <title>À propos de Jacquelec | Électricien à Rennes</title>
+        <title>
+          À propos de Jacquelec | Électricien à Rennes | Installation,
+          Dépannage, Mise aux Normes
+        </title>
+
         <meta
           name="description"
-          content="Jacques Pinard, expert électricien à Rennes, avec plus de 30 ans d'expérience dans l'installation, le dépannage et la mise aux normes électriques."
+          content="Jacques Pinard, électricien expert à Rennes avec plus de 30 ans d'expérience. Installation, dépannage et mise aux normes électriques de qualité et sécurisées."
         />
+
         <meta
           name="keywords"
-          content="électricien à Rennes, expert électricien, installation électrique Rennes, dépannage électricité Rennes"
+          content="électricien à Rennes, expert électricien, services électriques Rennes, installation électrique, dépannage électricité"
         />
       </Helmet>
       <section
@@ -39,7 +44,11 @@ export default function ThirdSlice() {
 
           <p className="contact text-lg sm:text-xl mb-8 px-4 animate__animated animate__fadeIn animate__delay-3s">
             Découvrez tous les services proposés sur la{" "}
-            <a href="/services" className="text-[#f1d832] underline">
+            <a
+              href="#services"
+              className="text-[#f1d832] underline"
+              aria-label="Voir les services proposés par Jacquelec"
+            >
               page Services
             </a>
             .
